@@ -1,0 +1,19 @@
+<div ng-controller="productsController">
+    <h1>products</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>title</th>
+            <th>price</th>
+            <th>action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in productPage">
+            <td>{{item.title}}</td>
+            <td>{{item.price}}</td>
+            <td><button ng-click="addToCart(item.id)">add to cart</button></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
