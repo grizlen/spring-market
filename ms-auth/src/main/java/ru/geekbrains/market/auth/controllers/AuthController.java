@@ -11,17 +11,22 @@ import ru.geekbrains.market.auth.services.AuthService;
 @RequiredArgsConstructor
 public class AuthController {
 
-    private final AuthService authservice;
+    private final AuthService authService;
 
     @PostMapping("/signup")
     public AuthResponseDTO signUp(@RequestBody AuthRequestDTO request) {
-        return authservice.signUp(request);
+        return authService.signUp(request);
     }
+
     @PostMapping("/login")
-    public String logIn() {
-        return "sign up";
+    public AuthResponseDTO logIn(@RequestBody AuthRequestDTO request) {
+        return authService.logIn(request);
     }
+
     @GetMapping("/logout")
-    public void logOut() {
+    public void logOut(@RequestHeader("Authorization") String token) {
+        if (token != null) {
+            authService.logOut(token);
+        }
     }
 }

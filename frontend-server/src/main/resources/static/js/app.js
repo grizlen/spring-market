@@ -17,7 +17,7 @@ var marketApp = angular.module('marketApp', ['ngRoute', 'ngStorage'])
             controller: 'OrdersController'
         });
         $routeProvider.otherwise({
-            redirectTo: '/auth'
+            redirectTo: '/login'
         });
     }).run(function ($rootScope, $templateCache, $http, $localStorage) {
         $rootScope.$on('$routeChangeStart', function (event, next, current) {
