@@ -49,7 +49,7 @@ public class AuthService {
 
     private UserInfo userToUserInfo(User user) {
         UserInfo userInfo = new UserInfo();
-        user.setId(user.getId());
+        userInfo.setId(user.getId());
         userInfo.setLogin(user.getLogin());
         userInfo.setRoles(user.getRoles().stream().map(role -> role.getName()).collect(Collectors.toList()));
         return userInfo;

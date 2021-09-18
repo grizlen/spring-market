@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.geekbrains.market.route.ProductDTO;
+import ru.geekbrains.market.route.dtos.ProductDTO;
 import ru.geekbrains.market.products.services.ProductService;
 
 import java.util.List;

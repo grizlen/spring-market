@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.geekbrains.market.core.exceptions.ResourceNotFoundException;
 import ru.geekbrains.market.products.models.Product;
-import ru.geekbrains.market.route.ProductDTO;
+import ru.geekbrains.market.route.dtos.ProductDTO;
 import ru.geekbrains.market.products.repoitories.ProductRepository;
 
 import java.util.List;

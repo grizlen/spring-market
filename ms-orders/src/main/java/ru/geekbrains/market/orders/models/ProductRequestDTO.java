@@ -1,4 +1,4 @@
-package ru.geekbrains.market.route;
+package ru.geekbrains.market.orders.models;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,8 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ProductDTO {
+public class ProductRequestDTO {
     private Long id;
-    private String title;
-    private Float price;
+    private Integer count;
 }

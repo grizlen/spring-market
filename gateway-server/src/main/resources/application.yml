@@ -35,9 +35,9 @@ spring:
           predicates:
             - Path=/api/*/products/**
         - id: ms-orders
-          uri: lb://ms-ordes
+          uri: lb://ms-orders
           predicates:
-            - Path=/api/*/orders/**
+            - Path=/api/*/cart/**
 
 
 eureka:
