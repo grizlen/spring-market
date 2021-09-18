@@ -1,0 +1,21 @@
+<div ng-controller="cartController">
+    <h1>cart</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>title</th>
+            <th>price</th>
+            <th>count</th>
+            <th>amount</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in cartPage">
+            <td>{{item.productTitle}}</td>
+            <td>{{item.quantity}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.quantity * item.price}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

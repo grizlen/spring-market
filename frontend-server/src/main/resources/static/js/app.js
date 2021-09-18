@@ -10,7 +10,7 @@ var marketApp = angular.module('marketApp', ['ngRoute', 'ngStorage'])
         });
         $routeProvider.when('/cart', {
             templateUrl: 'views/cart.html',
-            controller: 'CartController'
+            controller: 'cartController'
         });
         $routeProvider.when('/orders', {
             templateUrl: 'views/orders.html',

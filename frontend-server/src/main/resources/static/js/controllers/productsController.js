@@ -16,7 +16,10 @@ marketApp.controller('productsController',
             $http({
                 method: 'POST',
                 url: contextPath + '/cart',
-                data: {id: id}
+                data: {
+                    id: id,
+                    count: 1
+                }
             });
         }
         $scope.getProducts();
