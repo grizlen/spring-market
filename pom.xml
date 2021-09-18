@@ -24,6 +24,7 @@
         <module>gateway-server</module>
         <module>config-server</module>
         <module>frontend-server</module>
+        <module>ms-orders</module>
     </modules>
 
     <parent>

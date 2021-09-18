@@ -1,8 +1,8 @@
 var marketApp = angular.module('marketApp', ['ngRoute', 'ngStorage'])
     .config(function ($routeProvider) {
-        $routeProvider.when('/auth', {
-            templateUrl: 'views/auth.html',
-            controller: 'sauthController'
+        $routeProvider.when('/login', {
+            templateUrl: 'views/login.html',
+            controller: 'loginController'
         });
         $routeProvider.when('/products', {
             templateUrl: 'views/products.html',
@@ -17,7 +17,7 @@ var marketApp = angular.module('marketApp', ['ngRoute', 'ngStorage'])
             controller: 'OrdersController'
         });
         $routeProvider.otherwise({
-            redirectTo: '/auth'
+            redirectTo: '/login'
         });
     }).run(function ($rootScope, $templateCache, $http, $localStorage) {
         $rootScope.$on('$routeChangeStart', function (event, next, current) {
