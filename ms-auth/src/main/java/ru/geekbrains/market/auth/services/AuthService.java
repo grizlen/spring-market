@@ -11,6 +11,7 @@ import ru.geekbrains.market.auth.repositoies.RoleRepository;
 import ru.geekbrains.market.auth.repositoies.UserRepository;
 import ru.geekbrains.market.core.exceptions.UserNotFoundException;
 import ru.geekbrains.market.core.models.UserInfo;
+import ru.geekbrains.market.core.repositories.RedisRepository;
 import ru.geekbrains.market.core.services.ITokenService;
 
 import java.util.Collections;
@@ -24,6 +25,7 @@ public class AuthService {
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
     private final ITokenService tokenService;
+    private final RedisRepository redisRepository;
 
     public AuthResponseDTO signUp(AuthRequestDTO authRequestDTO) {
         User user = new User();
@@ -56,6 +58,6 @@ public class AuthService {
     }
 
     public void logOut(String token) {
-        // TODO: 17.09.2021 redisrepository.setkey()
+        redisRepository.setKey(token);
     }
 }

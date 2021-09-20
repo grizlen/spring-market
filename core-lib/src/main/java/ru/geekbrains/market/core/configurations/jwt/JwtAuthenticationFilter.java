@@ -7,6 +7,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
+import ru.geekbrains.market.core.repositories.RedisRepository;
 import ru.geekbrains.market.core.services.ITokenService;
 import ru.geekbrains.market.core.models.UserInfo;
 
@@ -23,15 +24,16 @@ import java.util.stream.Collectors;
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final ITokenService tokenService;
+    private final RedisRepository redisRepository;
 
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest,
                                     HttpServletResponse httpServletResponse,
                                     FilterChain filterChain) throws ServletException, IOException {
         String authHeader = httpServletRequest.getHeader("Authorization");
-        if (authHeader == null ||
-                        !authHeader.startsWith("Bearer ")
-        // TODO: 17.09.2021 redisRepository.Haskey()
+        if (authHeader == null
+                || !authHeader.startsWith("Bearer ")
+                || redisRepository.hasKey(authHeader)
         ) {
             filterChain.doFilter(httpServletRequest, httpServletResponse);
             return;
