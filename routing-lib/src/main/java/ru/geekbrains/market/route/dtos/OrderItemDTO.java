@@ -4,13 +4,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @NoArgsConstructor
-public class CartItemDto {
-    private Long id;
-    private Long productId;
+public class OrderItemDTO {
+    private long userId;
+    private long productId;
     private String productTitle;
     private Integer quantity;
     private Float price;
+    private Float amount;
+    private LocalDateTime paid;
+    private LocalDateTime delivered;
 }

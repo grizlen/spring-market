@@ -14,7 +14,7 @@ var marketApp = angular.module('marketApp', ['ngRoute', 'ngStorage'])
         });
         $routeProvider.when('/orders', {
             templateUrl: 'views/orders.html',
-            controller: 'OrdersController'
+            controller: 'ordersController'
         });
         $routeProvider.otherwise({
             redirectTo: '/login'

@@ -1,5 +1,5 @@
-<div ng-controller="cartController">
-    <h1>cart</h1>
+<div ng-controller="ordersController">
+    <h1>order</h1>
     <table>
         <thead>
             <tr>
@@ -7,18 +7,20 @@
                 <th>price</th>
                 <th>count</th>
                 <th>amount</th>
-                <th>actions</th>
+<!--                <th>actions</th>-->
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="item in cartPage">
+            <tr ng-repeat="item in ordersPage">
                 <td>{{item.productTitle}}</td>
                 <td>{{item.quantity}}</td>
                 <td>{{item.price}}</td>
                 <td>{{item.quantity * item.price}}</td>
+<!--
                 <td>
-                    <button ng-click="order(item.id)">order</button>
+                    <button ng-click="order()">order</button>
                 </td>
+-->
             </tr>
         </tbody>
     </table>

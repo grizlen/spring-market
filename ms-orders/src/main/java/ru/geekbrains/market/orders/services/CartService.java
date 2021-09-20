@@ -55,6 +55,7 @@ public class CartService {
     private CartItemDto cartItemToDto(CartItem Item) {
         ProductDTO productDTO = productClient.getById(Item.getProductId());
         CartItemDto dto = new CartItemDto();
+        dto.setId(Item.getId());
         dto.setProductId(Item.getProductId());
         dto.setProductTitle(productDTO.getTitle());
         dto.setQuantity(Item.getQuantity());

@@ -13,6 +13,16 @@ marketApp.controller('cartController',
                 });
         };
     
+        $scope.order = function(id) {
+            $http({
+                method: 'POST',
+                url: contextPath + '/orders/' + id
+            })
+                .then(function (responcse) {
+                    $scope.getItems();
+                });
+        };
+    
         $scope.getItems();
     }
 )
