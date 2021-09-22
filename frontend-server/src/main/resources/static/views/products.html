@@ -9,11 +9,20 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="item in productPage">
+        <tr ng-repeat="item in productPage.content">
             <td>{{item.title}}</td>
             <td>{{item.price}}</td>
             <td><button ng-click="addToCart(item.id)">add to cart</button></td>
         </tr>
         </tbody>
     </table>
+    <p>{{navPages}}</p>
+    <p>{{productPage.number}}</p>
+    <ul>
+        <li ng-if="!productPage.first"><a ng-click="getProducts(productPage.number - 1)" >prew</a></li>
+        <li ng-repeat="pg in navPages">
+            <a ng-click="getProducts(pg)" >{{pg + 1}}</a>
+        </li>
+        <li ng-if="!productPage.last" ><a ng-click="getProducts(productPage.number + 1)" >next</a></li>
+    </ul>
 </div>

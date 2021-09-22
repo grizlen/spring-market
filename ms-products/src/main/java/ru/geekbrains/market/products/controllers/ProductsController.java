@@ -1,14 +1,10 @@
 package ru.geekbrains.market.products.controllers;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.*;
 import ru.geekbrains.market.route.dtos.ProductDTO;
 import ru.geekbrains.market.products.services.ProductService;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/products")
@@ -18,8 +14,8 @@ public class ProductsController {
     private final ProductService productService;
 
     @GetMapping
-    public List<ProductDTO> getAll() {
-        return productService.getAll();
+    public Page<ProductDTO> getAll(@RequestParam(name = "page", defaultValue = "0") Integer page) {
+        return productService.getAll(page < 0 ? 0 : page);
     }
 
     @GetMapping("/{id}")
