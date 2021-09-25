@@ -3,7 +3,7 @@ marketApp.controller('loginController',
 
         const contextPath = 'http://localhost:5555/api/v1';
 
-        $scope.user = null;
+        $scope.user = {};
 
         $scope.signUp = function() {
             $http({
@@ -34,6 +34,9 @@ marketApp.controller('loginController',
                 $scope.user.token = response.data;
                 $http.defaults.headers.common.Authorization = $scope.user.token.token;
                 $localStorage.currentUser = $scope.user;
+            }, function (response) {
+                alert(response.data.message);
+                $scope.userFree();
             });
         };
     
@@ -43,12 +46,23 @@ marketApp.controller('loginController',
                 url: contextPath + '/auth/logout',
             })
             .then(function (response) {
-                $scope.user = null;
-                $http.defaults.headers.common.Authorization = '';
-                delete $localStorage.currentUser;
+                $scope.userFree();
+//                $scope.user = null;
+//                $http.defaults.headers.common.Authorization = '';
+//                delete $localStorage.currentUser;
             });
         };
-    
+
+        $scope.userFree = function() {
+            $scope.user = {};
+            $http.defaults.headers.common.Authorization = '';
+            delete $localStorage.currentUser;
+        };
+
+        $scope.isUserLogin = function() {
+            return $scope.user.token != null;
+        };
+
     if ($localStorage.currentUser) {
         $scope.user = $localStorage.currentUser;
         $scope.logIn();
