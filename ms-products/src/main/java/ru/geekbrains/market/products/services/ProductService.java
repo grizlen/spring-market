@@ -13,7 +13,7 @@ import ru.geekbrains.market.products.repoitories.ProductRepository;
 @RequiredArgsConstructor
 public class ProductService {
 
-    private static final int PAGE_SIZE = 2;
+    private static final int PAGE_SIZE = 5;
 
     private final ProductRepository productRepository;
 

@@ -1,28 +1,42 @@
 <div ng-controller="productsController">
-    <h1>products</h1>
-    <table>
-        <thead>
-        <tr>
-            <th>title</th>
-            <th>price</th>
-            <th>action</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="item in productPage.content">
-            <td>{{item.title}}</td>
-            <td>{{item.price}}</td>
-            <td><button ng-click="addToCart(item.id)">add to cart</button></td>
-        </tr>
-        </tbody>
-    </table>
-    <p>{{navPages}}</p>
-    <p>{{productPage.number}}</p>
-    <ul>
-        <li ng-if="!productPage.first"><a ng-click="getProducts(productPage.number - 1)" >prew</a></li>
-        <li ng-repeat="pg in navPages">
-            <a ng-click="getProducts(pg)" >{{pg + 1}}</a>
+    <div class="content">
+        <div>
+            <h1>Products</h1>
+            <div class="product-list">
+                <div class="product-card" ng-repeat="item in productPage.content">
+                    <p>{{item.title}}</p>
+                    <p>{{item.price}}</p>
+                    <div><button class="list-button" ng-click="addToCart(item.id)">to cart</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--    <p>{{navPages}}</p>-->
+<!--    <p>{{productPage.number}}</p>-->
+    <ul class="page-nav">
+        <li ng-if="productPage.first">
+            <a class="page-nav-btn page-nav-inactive">prev</a>
         </li>
-        <li ng-if="!productPage.last" ><a ng-click="getProducts(productPage.number + 1)" >next</a></li>
+        <li ng-if="!productPage.first">
+            <a class="page-nav-btn" ng-click="getProducts(productPage.number - 1)">prev</a>
+        </li>
+        <li ng-repeat="pg in navPages">
+            <a ng-if="pg != productPage.number" class="page-nav-btn" ng-click="getProducts(pg)">{{pg + 1}}</a>
+            <a ng-if="pg == productPage.number" class="page-nav-btn page-nav-current">{{pg + 1}}</a>
+        </li>
+        <li ng-if="productPage.last">
+            <a ng-class="" class="page-nav-btn page-nav-inactive">next</a>
+        </li>
+        <li ng-if="!productPage.last">
+            <a ng-class="" class="page-nav-btn" ng-click="getProducts(productPage.number + 1)">next</a>
+        </li>
     </ul>
+
+<!--    <ul>-->
+<!--        <li ng-if="!productPage.first"><a ng-click="getProducts(productPage.number - 1)" >prew</a></li>-->
+<!--        <li ng-repeat="pg in navPages">-->
+<!--            <a ng-click="getProducts(pg)" >{{pg + 1}}</a>-->
+<!--        </li>-->
+<!--        <li ng-if="!productPage.last" ><a ng-click="getProducts(productPage.number + 1)" >next</a></li>-->
+<!--    </ul>-->
 </div>
